@@ -41,18 +41,18 @@ class ApplicationUITests {
         addItem("b", 30, "description")
         addItem("a", 40, "desc")
         //when
-        testDeleteFirstElement()
+        testDeleteSecondElement()
         //then
         onView(withId(R.id.rv_calorie))
             .perform(scrollToPosition<RecyclerView.ViewHolder>(0))
-            .check(matches(atPosition(0, ViewMatchers.hasDescendant(ViewMatchers.withText("a")))))
+            .check(matches(atPosition(0, ViewMatchers.hasDescendant(ViewMatchers.withText("b")))))
     }
 
-    private fun testDeleteFirstElement() {
+    private fun testDeleteSecondElement() {
         onView(withId(R.id.rv_calorie))
             .perform(
                     RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                            0,
+                            1,
                             longClick()
                     )
             )
