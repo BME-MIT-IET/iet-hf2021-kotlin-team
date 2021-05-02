@@ -10,6 +10,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
@@ -30,19 +31,15 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ApplicationUITests {
 
-    @Rule
-    @JvmField
-    var mActivityTestRule = ActivityTestRule(ListActivity::class.java)
 
     @Before
     fun setup() {
         val activityScenario = ActivityScenario.launch(ListActivity::class.java)
-        //clearList()
+        clearList()
     }
 
     @Test
     fun testDeleteWithMultipleElements() {
-
         testCreateTwoElement()
         testDeleteFirstElement()
         onView(withId(R.id.rv_calorie))
@@ -54,10 +51,16 @@ class ApplicationUITests {
         addItem("b", 30, "description")
         addItem("a", 40, "desc")
     }
+
     private fun testDeleteFirstElement() {
         onView(withId(R.id.rv_calorie))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, longClick()));
-        onView(withId(R.id.delete)).perform(click())
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    0,
+                    longClick()
+                )
+            );
+        onView(withText("Delete")).perform(click())
 
     }
 
