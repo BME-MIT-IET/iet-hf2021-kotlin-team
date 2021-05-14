@@ -9,6 +9,8 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import hu.bme.aut.android.mobweb_hf_calorie.activity.ListActivity
 import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.addItem
 import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.clearList
+import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.getCurrentDateInDisplayFormat
+import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.getCurrentTimeInDisplayFormat
 import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.orderByDateAndTime
 import hu.bme.aut.android.mobweb_hf_calorie.util.MyMatcher
 import hu.bme.aut.android.mobweb_hf_calorie.util.RecyclerViewItemCountAssertion
@@ -134,16 +136,4 @@ class CalorieListTest {
             .check(matches(isCompletelyDisplayed()))
     }
 
-    private fun getCurrentDateInDisplayFormat(): String {
-        val now = LocalDateTime.now()
-        return String.format("%04d", now.year) + "." + String.format("%02d", now.month.value) + "." + String.format(
-            "%02d",
-            now.dayOfMonth
-        )
-    }
-
-    private fun getCurrentTimeInDisplayFormat(): String {
-        val now = LocalDateTime.now()
-        return String.format("%02d", now.hour) + ":" + String.format("%02d", now.minute)
-    }
 }

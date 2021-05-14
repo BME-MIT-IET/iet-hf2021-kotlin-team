@@ -68,4 +68,17 @@ object CommonTest {
             .perform(click())
     }
 
+    fun getCurrentDateInDisplayFormat(): String {
+        val now = LocalDateTime.now()
+        return String.format("%04d", now.year) + "." + String.format("%02d", now.month.value) + "." + String.format(
+            "%02d",
+            now.dayOfMonth
+        )
+    }
+
+    fun getCurrentTimeInDisplayFormat(): String {
+        val now = LocalDateTime.now()
+        return String.format("%02d", now.hour) + ":" + String.format("%02d", now.minute)
+    }
+
 }
