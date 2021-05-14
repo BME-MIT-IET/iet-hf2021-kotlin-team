@@ -29,8 +29,8 @@ Feature: Calorie list functions
     Then the description shown on the screen is <string>
 
     Examples:
-      | string |
-      | Testing   |
+      | string  |
+      | Testing |
 
   @setup-feature
   Scenario Outline: if item type is Workout, then there are two pages
@@ -40,8 +40,8 @@ Feature: Calorie list functions
     Then user is at the second page
 
     Examples:
-      |int |int2  | string |
-      |1   | 2    | Workout |
+      | int | int2 | string  |
+      | 1   | 2    | Workout |
 
   @setup-feature
   Scenario Outline: User sorts by date and time
@@ -52,8 +52,8 @@ Feature: Calorie list functions
     And 1 th element has date: <date1> and time: <time1>
 
     Examples:
-      |date1        |date2          | time1 |time2  |
-      |2030.10.10   | 2022.11.14    | 10:20 | 10:20 |
+      | date1      | date2      | time1 | time2 |
+      | 2030.10.10 | 2022.11.14 | 10:20 | 10:20 |
 
   @setup-feature
   Scenario: User pressed delete all and dialog is shown

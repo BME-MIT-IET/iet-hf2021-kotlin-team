@@ -29,8 +29,8 @@ Feature: bdd Test Functions
     Then check name changed to <string>
 
     Examples:
-      | int |      | string |
-      | 1   |      | Testing   |
+      | int |  | string  |
+      | 1   |  | Testing |
 
   @setup-feature
   Scenario Outline: User add one lunch item then check page number
@@ -40,8 +40,8 @@ Feature: bdd Test Functions
     Then item has web page
 
     Examples:
-      | int |      | string |
-      | 1   |      | Lunch   |
+      | int |  | string |
+      | 1   |  | Lunch  |
 
   @setup-feature
   Scenario Outline: User add two item then order it by name
