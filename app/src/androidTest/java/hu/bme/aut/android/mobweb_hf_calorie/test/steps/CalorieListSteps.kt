@@ -51,6 +51,17 @@ class CalorieListSteps{
             addItem("testName", 50)
     }
 
+    @When("adding {int} {word} item to the list")
+    fun adding_num_items_to_the_list(int: Int, type: String){
+        for(i in 0 until int)
+            addItem("testName", 50, type = type)
+    }
+
+    @When("adding {int} item to the list with number")
+    fun adding_num_items_to_the_list_with_number(int: Int){
+        for(i in 0 until int)
+            addItem("testName$i", 50)
+    }
 
     @Then("the list has {int} item")
     fun the_list_has_x_item(int: Int){
@@ -153,8 +164,75 @@ class CalorieListSteps{
         onView(withText(R.string.ok))
                 .check(matches(isCompletelyDisplayed()))
     }
+    @Then("item has web page")
+    fun item_has_web_page(){
+        onView(withText("Web")).perform(ViewActions.click()).check(matches(ViewMatchers.isDisplayed()))
+    }
 
+    @When("order items by name")
+    fun order_items_by_name(){
+        onView(withContentDescription("More options"))
+            .check(matches(isDisplayed()))
+            .perform(ViewActions.click())
 
+        onView(withText("Order By"))
+            .perform(ViewActions.click())
+        onView(withText("Name"))
+            .perform(ViewActions.click())
+    }
 
+    @Then("order is correct after ordering by name")
+    fun order_is_correct_after_ordering_by_name(){
+        onView(withId(R.id.rv_calorie))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+            .check(matches(MyMatcher.atPosition(0, hasDescendant(withText("testName0")))))
+    }
+
+@When("delete second item")
+fun delete_second_item(){
+    onView(withId(R.id.rv_calorie))
+        .perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                1,
+                ViewActions.longClick()
+            )
+        )
+    onView(withText("Delete")).perform(ViewActions.click())
+}
+
+@Then("one item in list")
+fun one_item_in_list(){
+    onView(withId(R.id.rv_calorie))
+        .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+        .check(matches(MyMatcher.atPosition(0, hasDescendant(withText("testName0")))))
+}
+
+@When("edit first item name to {word}")
+fun one_item_in_list(nameAfterEdit : String){
+    onView(withId(R.id.rv_calorie))
+        .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            ViewActions.longClick()
+        ))
+    onView(withText("Edit")).perform(ViewActions.click())
+    onView(AllOf.allOf(withId(R.id.nameET), ViewMatchers.isDisplayed()))
+        .perform(ViewActions.replaceText(nameAfterEdit))
+    onView(withText("OK")).perform(ViewActions.click())
+}
+
+@Then("check name changed to {word}")
+fun check_name_changed(nameAfterEdit :String){
+    onView(withId(R.id.rv_calorie))
+        .check(matches(MyMatcher.atPosition(0, hasDescendant(withText(nameAfterEdit)))))
+}
+
+@And("navigate to diagram")
+fun navigate_to_diagram(){
+    onView(withText("Diagram")).perform(ViewActions.click())
+}
+
+    @Then("diagram is visible")
+    fun diagram_is_visible(){
+        onView(AllOf.allOf(withId(R.id.barChart), ViewMatchers.isDisplayed()))
+    }
 
 }
