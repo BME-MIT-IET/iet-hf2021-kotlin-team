@@ -1,11 +1,13 @@
 package io.cucumber.junit.shadow;
 
-import dalvik.system.DexFile;
+import org.robolectric.annotation.Implementation;
+import org.robolectric.annotation.Implements;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
-import org.robolectric.annotation.Implementation;
-import org.robolectric.annotation.Implements;
+
+import dalvik.system.DexFile;
 
 @Implements(DexFile.class)
 public class ShadowDexFile {

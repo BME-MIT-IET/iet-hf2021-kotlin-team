@@ -1,11 +1,11 @@
 package io.cucumber.junit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cucumber.runtime.filter.Filters;
 import cucumber.runtime.model.CucumberFeature;
 import gherkin.events.PickleEvent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility class to count scenarios, including outlined.

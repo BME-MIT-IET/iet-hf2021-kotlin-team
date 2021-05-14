@@ -2,14 +2,15 @@ package io.cucumber.junit;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import cucumber.runtime.CucumberException;
-import cucumber.runtime.io.Resource;
-import cucumber.runtime.io.ResourceLoader;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import cucumber.runtime.CucumberException;
+import cucumber.runtime.io.Resource;
+import cucumber.runtime.io.ResourceLoader;
 
 /**
  * Android specific implementation of {@link cucumber.runtime.io.ResourceLoader} which loads non-class resources such as .feature files.

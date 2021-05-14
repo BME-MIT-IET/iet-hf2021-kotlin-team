@@ -1,12 +1,12 @@
 package io.cucumber.junit;
 
-import io.cucumber.cucumberexpressions.AndroidPatternCompiler;
-import io.cucumber.cucumberexpressions.PatternCompiler;
-
 import org.junit.Test;
 
 import java.util.ServiceLoader;
 import java.util.regex.Pattern;
+
+import io.cucumber.cucumberexpressions.AndroidPatternCompiler;
+import io.cucumber.cucumberexpressions.PatternCompiler;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

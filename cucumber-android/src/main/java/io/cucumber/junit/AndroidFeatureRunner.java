@@ -1,15 +1,15 @@
 package io.cucumber.junit;
 
-import cucumber.runtime.model.CucumberFeature;
-import gherkin.ast.Feature;
-import io.cucumber.junit.AndroidPickleRunner;
-
 import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
 import org.junit.runners.model.InitializationError;
 
 import java.util.List;
+
+import cucumber.runtime.model.CucumberFeature;
+import gherkin.ast.Feature;
+import io.cucumber.junit.AndroidPickleRunner;
 
 public class AndroidFeatureRunner extends ParentRunner<AndroidPickleRunner> {
 

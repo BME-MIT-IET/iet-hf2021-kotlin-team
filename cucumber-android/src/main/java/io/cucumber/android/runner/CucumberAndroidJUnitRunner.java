@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.test.runner.AndroidJUnitRunner;
 
-import io.cucumber.junit.CucumberArgumentsProvider;
 import io.cucumber.junit.CucumberAndroidJUnitArguments;
+import io.cucumber.junit.CucumberArgumentsProvider;
 
 /**
  * {@link AndroidJUnitRunner} for cucumber tests. It supports running tests from Android Tests Orchestrator

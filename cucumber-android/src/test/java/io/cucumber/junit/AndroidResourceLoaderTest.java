@@ -2,8 +2,8 @@ package io.cucumber.junit;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+
 import com.google.common.collect.Lists;
-import cucumber.runtime.io.Resource;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -17,6 +17,8 @@ import org.robolectric.annotation.Config;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+
+import cucumber.runtime.io.Resource;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;

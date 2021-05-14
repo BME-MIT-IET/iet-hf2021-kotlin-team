@@ -1,12 +1,12 @@
 package io.cucumber.junit;
 
+import org.junit.runner.Description;
+import org.junit.runner.notification.RunNotifier;
+
 import cucumber.runner.Runner;
 import cucumber.runtime.model.CucumberFeature;
 import gherkin.events.PickleEvent;
 import gherkin.pickles.PickleStep;
-
-import org.junit.runner.Description;
-import org.junit.runner.notification.RunNotifier;
 
 public class AndroidPickleRunner implements PickleRunners.PickleRunner {
 

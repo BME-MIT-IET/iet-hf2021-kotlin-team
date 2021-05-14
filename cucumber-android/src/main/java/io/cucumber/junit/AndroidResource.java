@@ -2,11 +2,12 @@ package io.cucumber.junit;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import cucumber.runtime.io.Resource;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+
+import cucumber.runtime.io.Resource;
 
 /**
  * Android specific implementation of {@link cucumber.runtime.io.Resource} which is apple

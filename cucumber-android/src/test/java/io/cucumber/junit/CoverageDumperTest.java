@@ -2,8 +2,8 @@ package io.cucumber.junit;
 
 import android.app.Instrumentation;
 import android.os.Bundle;
+
 import com.vladium.emma.rt.RT;
-import java.io.File;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -12,6 +12,8 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+
+import java.io.File;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

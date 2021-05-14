@@ -2,12 +2,14 @@ package hu.bme.aut.android.mobweb_hf_calorie.test.steps
 
 import android.app.Activity
 import android.content.Intent
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
@@ -28,8 +30,10 @@ import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.getCurrentDateInDisp
 import hu.bme.aut.android.mobweb_hf_calorie.util.CommonTest.getCurrentTimeInDisplayFormat
 import hu.bme.aut.android.mobweb_hf_calorie.util.MyMatcher
 import hu.bme.aut.android.mobweb_hf_calorie.util.RecyclerViewItemCountAssertion
+import org.hamcrest.core.AllOf
 import org.junit.Rule
 import org.junit.runner.RunWith
+import java.time.LocalDateTime
 
 @LargeTest
 class CalorieListSteps{
@@ -73,10 +77,12 @@ class CalorieListSteps{
         addItem("testName1", 50, string)
     }
 
-    @When("item is tapped")
-    fun item_is_tapped(){
-        onView(withText("testName1"))
-                .perform(ViewActions.click())
+    @When("tapping on first item")
+    fun tapping_on_first_item(){
+        onView(withId(R.id.rv_calorie))
+                .perform(
+                        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+                                ViewActions.click()))
     }
 
     @Then("the description shown on the screen is {word}")
@@ -86,9 +92,66 @@ class CalorieListSteps{
     }
 
     @Given("{int} item with {word} type")
-    fun adding_num_items_to_the_list_with_type(int: Int, string: String){
+    fun num_item_with_string_type(int: Int, string: String){
         for(i in 0 until int)
-            addItem("testName", 50)
+            addItem("testName", 50, type = string)
+    }
+
+    @When("swiping left {int} time")
+    fun swiping_left_num_time(int: Int){
+        val viewPager = onView(withId(R.id.mainViewPager))
+        for(i in 0 until int){
+            viewPager.perform(ViewActions.swipeLeft())
+        }
+
+    }
+
+    @Then("user is at the second page")
+    fun user_is_at_the_second_page(){
+        onView(AllOf.allOf(withId(R.id.linLayoutDiagram)))
+                .check(matches(isCompletelyDisplayed()))
+    }
+
+    @Given("an item with date: {word} and time: {word}")
+    fun an_item_with_date(date: String, time: String){
+        val dateData = date.split(".")
+        val timeData = time.split(":")
+        val date = LocalDateTime.of(dateData[0].toInt(), dateData[1].toInt(), dateData[2].toInt(), timeData[0].toInt(), timeData[1].toInt())
+        addItem("testEvent1", 50, dateTime = date)
+    }
+
+    @When("ordering by date and time")
+    fun order_by_date_and_time(){
+        CommonTest.orderByDateAndTime()
+    }
+
+    @Then("{int} th element has date: {word} and time: {word}")
+    fun nt_element_has_date(int: Int, date: String, time: String){
+        onView(withId(R.id.rv_calorie))
+                .check(matches(MyMatcher.atPosition(int, hasDescendant(withText(date)))))
+                .check(matches(MyMatcher.atPosition(int, hasDescendant(withText(time)))))
+    }
+
+    @When("delete all is selected")
+    fun delete_all_is_selected(){
+        onView(withContentDescription("More options"))
+                .check(matches(isDisplayed()))
+                .perform(ViewActions.click())
+
+        onView(withText("Delete All"))
+                .perform(ViewActions.click())
+    }
+
+    @Then("are you sure dialog is shown")
+    fun are_your_sure_dialog_is_shown(){
+        onView(withText(R.string.areyousure))
+                .check(matches(isCompletelyDisplayed()))
+
+        onView(withText(R.string.cancel))
+                .check(matches(isCompletelyDisplayed()))
+
+        onView(withText(R.string.ok))
+                .check(matches(isCompletelyDisplayed()))
     }
 
 
