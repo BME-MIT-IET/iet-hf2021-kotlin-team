@@ -1,0 +1,62 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Box settings
+  config.vm.box = "chenhan/anbox"
+
+  # Provider settings
+  config.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = true
+      vb.memory = "3072"
+   end
+
+  # Network settings
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  # config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network "public_network"
+
+  # Folder settings
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provision settings
+   config.vm.provision "shell", inline: <<-SHELL
+    apt-get update && apt-get upgrade
+    apt-get install -y gradle
+    apt-get install -y android-tools-adb
+    apt-get install -y android-sdk
+    apt-get install -y dos2unix
+    export ANDROID_SDK_ROOT=/usr/lib/android-sdk
+    export ANDROID_HOME=/usr/lib/android-sdk
+    chown -R $(whoami) /usr/lib/android-sdk
+    cd ~/
+    yes | wget https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip
+    unzip commandlinetools-linux-7302050_latest.zip -d cmdline-tools
+    sudo mv cmdline-tools/cmdline-tools $ANDROID_HOME/
+    cd /usr/lib/android-sdk/cmdline-tools/bin/
+    yes | ./sdkmanager --licenses --sdk_root=$ANDROID_SDK_ROOT
+    yes | ./sdkmanager --update --sdk_root=$ANDROID_SDK_ROOT
+    cd /home/vagrant
+    > build.sh
+    echo "#!/usr/bin/env sh" >> build.sh
+    echo "export ANDROID_SDK_ROOT=/usr/lib/android-sdk" >> build.sh
+    echo "export ANDROID_HOME=/usr/lib/android-sdk" >> build.sh
+    echo "cd /vagrant" >> build.sh
+    echo "./gradlew" >> build.sh
+    echo "./gradlew assemble" >> build.sh
+    echo "exit 0" >> build.sh
+    > start.sh
+    echo "#!/usr/bin/env sh" >> start.sh
+    echo "anbox.appmgr" >> start.sh
+    echo "adb install /vagrant/app/build/outputs/apk/debug/app-debug.apk" >> start.sh
+    echo "exit 0" >> start.sh
+    chmod +x build.sh start.sh
+    dos2unix gradlew
+    echo "Ready to login!"
+   SHELL
+
+   config.vm.provision "shell", 
+    inline: "sh /home/vagrant/build.sh && /home/vagrant/start.sh", run: "always"
+end
