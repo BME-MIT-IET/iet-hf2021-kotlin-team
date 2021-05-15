@@ -37,9 +37,7 @@ class CalorieEventAdapter internal constructor(private val listener: OnCalorieEv
             OrderBy.Name ->{
                 sorted = calorieEvents.sortedWith(compareBy({ it.name })) as List<CalorieEvent>
             }
-            else -> {
 
-            }
         }
 
 
