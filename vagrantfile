@@ -1,3 +1,17 @@
+# Parancsok:
+
+# vagrant up: VM készítése
+# vagrant destory: VM elpusztitása (végleges)
+# vagrant resume: meglévő VM elindítása
+# vagrant suspend: VM megállítása
+# vagrant reload: VM újratöltése
+
+# Scriptek a home mappában.
+
+# build.sh: lebuildeli az apk-t
+# start.sh: elindítja az emulátort és telepíti rá
+
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
