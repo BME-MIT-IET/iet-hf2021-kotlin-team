@@ -154,7 +154,6 @@ class DiagramFragment : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment DiagramFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(calev: CalorieEvent, calevlist: MutableList<CalorieEvent>) =
             DiagramFragment().apply {

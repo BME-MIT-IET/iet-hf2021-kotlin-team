@@ -2,6 +2,19 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "org.sonarqube"
+sonarqube {
+    properties {
+        property "sonar.projectName", "hf_calorie"
+        property "sonar.projectKey", "hf_calorie"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.language", "kotlin"
+        property "sonar.sources", "src/main/java/hu/bme/aut/android/mobweb_hf_calorie"
+        property "sonar.login", "admin"
+        property "sonar.password", "password"
+    }
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
