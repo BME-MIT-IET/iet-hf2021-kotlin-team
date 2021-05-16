@@ -29,8 +29,8 @@ android {
 
         //use 'cucumber.api.android.CucumberAndroidJUnitRunner' for Cucumber tests
         //use "androidx.test.runner.AndroidJUnitRunner" for tests other than Cucumber
-        //testInstrumentationRunner 'cucumber.api.android.CucumberAndroidJUnitRunner'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'cucumber.api.android.CucumberAndroidJUnitRunner'
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
