@@ -6,6 +6,6 @@ A projekthez kapcsolódóan beállításra kerül a szükséges JDK verzió, ell
 
 Tesztelési célzattal is létre lett hozva pull request, vizsgálva az ellenőrzés sikerességét. A későbbi merge-elések során minden alkalommal lefutott az ellenőrzés, előfordult, hogy talált hibákat, ilyen esetekben átnéztük és javítottuk azokat.
 
-
+![](ci_picture.png)
 
 Szerintem hosszútávon egyértelműen megtérülő befektetés a Continous Integration beüzemelése, főleg akkor, ha többen dolgoznak egy projekten. Minden alkalommal egy visszajelzést kaphatunk arról, hogy az egyes módosításoknak volt-e negatív hatása a meglévő kódbázisra.
