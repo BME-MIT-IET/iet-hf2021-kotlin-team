@@ -22,15 +22,28 @@ android {
 
     defaultConfig {
         applicationId "hu.bme.aut.android.mobweb_hf_calorie"
-        minSdkVersion 26
+        minSdkVersion 25
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //use 'cucumber.api.android.CucumberAndroidJUnitRunner' for Cucumber tests
+        //use "androidx.test.runner.AndroidJUnitRunner" for tests other than Cucumber
+        testInstrumentationRunner 'cucumber.api.android.CucumberAndroidJUnitRunner'
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ['src/androidTest/assets']
+        }
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -70,5 +83,18 @@ dependencies {
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.8.0"
     implementation 'com.airbnb.android:lottie:3.0.0'
 
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0-alpha05'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-alpha05'
+
+    //cucumber
+    androidTestImplementation group: 'io.cucumber', name: 'cucumber-java', version: '4.2.5'
+    androidTestImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '4.2.5'
+    androidTestImplementation group: 'io.cucumber', name: 'cucumber-android', version: '4.2.5'
+    androidTestImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.2.5'
+
+    testImplementation group: 'com.android.support.test', name: 'runner', version: '1.0.2'
 
 }

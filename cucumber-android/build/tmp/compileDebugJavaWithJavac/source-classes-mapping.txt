@@ -1,0 +1,50 @@
+io/cucumber/junit/CucumberJUnitRunnerBuilder.java
+ io.cucumber.junit.CucumberJUnitRunnerBuilder
+io/cucumber/junit/Arguments.java
+ io.cucumber.junit.Arguments
+ io.cucumber.junit.Arguments$DEFAULT
+ io.cucumber.junit.Arguments$KEY
+io/cucumber/junit/MissingStepDefinitionError.java
+ io.cucumber.junit.MissingStepDefinitionError
+io/cucumber/junit/AndroidFeatureRunner.java
+ io.cucumber.junit.AndroidFeatureRunner
+io/cucumber/junit/CucumberArgumentsProvider.java
+ io.cucumber.junit.CucumberArgumentsProvider
+io/cucumber/junit/CucumberJUnitRunner.java
+ io.cucumber.junit.CucumberJUnitRunner
+ io.cucumber.junit.CucumberJUnitRunner$1
+io/cucumber/junit/DexClassFinder.java
+ io.cucumber.junit.DexClassFinder
+io/cucumber/junit/FeatureCompiler.java
+ io.cucumber.junit.FeatureCompiler
+io/cucumber/cucumberexpressions/AndroidPatternCompiler.java
+ io.cucumber.cucumberexpressions.AndroidPatternCompiler
+io/cucumber/junit/AndroidResourceLoader.java
+ io.cucumber.junit.AndroidResourceLoader
+io/cucumber/junit/DebuggerWaiter.java
+ io.cucumber.junit.DebuggerWaiter
+io/cucumber/junit/AndroidPickleRunner.java
+ io.cucumber.junit.AndroidPickleRunner
+io/cucumber/junit/AndroidLogcatReporter.java
+ io.cucumber.junit.AndroidLogcatReporter
+ io.cucumber.junit.AndroidLogcatReporter$1
+ io.cucumber.junit.AndroidLogcatReporter$2
+ io.cucumber.junit.AndroidLogcatReporter$3
+io/cucumber/android/BuildConfig.java
+ io.cucumber.android.BuildConfig
+cucumber/runtime/java/AndroidJavaBackendFactory.java
+ cucumber.runtime.java.AndroidJavaBackendFactory
+io/cucumber/junit/CucumberAndroidJUnitArguments.java
+ io.cucumber.junit.CucumberAndroidJUnitArguments
+ io.cucumber.junit.CucumberAndroidJUnitArguments$AndroidJunitRunnerArgs
+ io.cucumber.junit.CucumberAndroidJUnitArguments$Args
+ io.cucumber.junit.CucumberAndroidJUnitArguments$InternalCucumberAndroidArgs
+io/cucumber/junit/AndroidResource.java
+ io.cucumber.junit.AndroidResource
+io/cucumber/junit/CoverageDumper.java
+ io.cucumber.junit.CoverageDumper
+io/cucumber/junit/AndroidJunitRuntimeOptionsFactory.java
+ io.cucumber.junit.AndroidJunitRuntimeOptionsFactory
+ io.cucumber.junit.AndroidJunitRuntimeOptionsFactory$Options
+io/cucumber/android/runner/CucumberAndroidJUnitRunner.java
+ io.cucumber.android.runner.CucumberAndroidJUnitRunner

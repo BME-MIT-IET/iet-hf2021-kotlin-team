@@ -121,7 +121,6 @@ class ListActivity : AppCompatActivity(), CalorieEventAdapter.OnCalorieEventSele
                 alertbox.setNegativeButton(getString(R.string.cancel),null)
                 alertbox.show()
 
-
                 true
             }
             R.id.ob_date_time -> {
