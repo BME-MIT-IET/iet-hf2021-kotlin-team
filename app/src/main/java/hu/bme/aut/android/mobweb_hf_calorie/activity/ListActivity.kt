@@ -276,7 +276,6 @@ class ListActivity : AppCompatActivity(), CalorieEventAdapter.OnCalorieEventSele
         values.put(CalendarContract.Events.DESCRIPTION, calEvent.description)
         values.put(CalendarContract.Events.CALENDAR_ID, 3)
         values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID())
-        val uri = contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
 
         playTone()
     }
